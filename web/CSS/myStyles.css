@@ -1,0 +1,60 @@
+/* 
+    Created on : Jul 23, 2017, 1:08:13 AM
+    Author     : tetraPRO( )
+                     : Software Wizard
+                    : Grand-Master Philip Caputo
+                  : **Fullstack Engineer**
+*/
+
+body{
+    background-color: #ffffff;
+}
+
+#navigation{
+    background-color: #ffff00;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li{
+    float: left;
+}
+
+
+li a{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover{
+    background-color: #330033;
+    color: #ffff00;
+}
+
+#user_interface{
+    border-style: solid;
+    border-width: 2px;
+    
+    margin: auto;
+    margin-top: 16.8px;;
+   width: 61.8%;
+   padding: 33px;
+}
+
+#transaction_list{
+    border-style: solid;
+    border-width: 2px;
+    
+    margin: auto;
+   width: 61.8%;
+   padding: 33px;
+}
