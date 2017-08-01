@@ -1,12 +1,11 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ServerLogic;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author tetraPRO( )
-*                 : Software Wizard
-*                   : Grand-Master Philip Caputo
-*                  : **Fullstack Engineer**
-*/
-public class UI_Servlet extends HttpServlet {
+ *                  : Software Wizard
+ *                  : Grand-Master Philip Caputo
+ *                : **Fullstack Engineer**
+ */
+public class Display_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,32 +32,10 @@ public class UI_Servlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try {
-            String date = request.getParameter("datepicker");
-            String toAccount = request.getParameter("toAccount");
-            String fromAccount = request.getParameter("fromAccount");
-            String amount = request.getParameter("amount");
-            String notes = request.getParameter("notes");
-            
-            //Convert string date into date object
-            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-            java.util.Date today = format.parse(date);
-            java.sql.Date sqlDate = new java.sql.Date(today.getTime());
-            
-            SQL data = new SQL();
-            
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            
-            //if the transaction is successful we will forward the request back to the index.jsp
-            if(data.addTransaction(sqlDate, toAccount, fromAccount, amount, notes)){
-                  request.getRequestDispatcher("index.jsp").forward(request, response);            
-            }else{
-                out.println("Sorry no dice! + <br>");
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(UI_Servlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //SQL data = new SQL();
+                  
+        request.getRequestDispatcher("display.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

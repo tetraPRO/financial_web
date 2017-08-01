@@ -29,3 +29,16 @@
 #clearButton{
     
 }
+
+.display_Headers{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.display_Data{
+    padding: 3px;
+}
+
+tr.displayData td{
+    border-bottom: 1pt solid black;
+}

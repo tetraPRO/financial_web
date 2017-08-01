@@ -29,6 +29,7 @@
                 <li><a href="">View</a></li>
             </ul>
         </nav>
+        <center><h1>tetraPRO( ) Financials</h1></center>
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
         <!-- This is the user interface where we input the details of the transaction -->
         <section id="user_interface">
@@ -38,8 +39,8 @@
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <!-- 1st row has 3 columns -->
                     <tr>
-                        <td><input id="datepicker" type="text" /></td>
-                        <td><select id="toAccount" >
+                        <td><input id="datepicker" type="text"  name="datepicker"/></td>
+                        <td><select id="toAccount"  name="toAccount">
                                     <option>Taxes</option>
                                     <option>Mortgage/Rent</option>
                                     <option>Insurance</option>
@@ -53,13 +54,13 @@
                                     <option>Other</option>
                             </select>
                         </td>
-                        <td><input id="amount" type="text"  value="Amount" /></td>
+                        <td><input id="amount" type="text"  value="Amount"  name="amount"/></td>
                     </tr>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <!-- 2nd row has 3 columns -->
                     <tr>
                         <td></td>
-                        <td><select id="fromAccount"  >
+                        <td><select id="fromAccount"  name="fromAccount">
                                     <option>Bank</option>
                                     <option>Cash</option>
                                     <option>Bitcoin</option>
@@ -70,12 +71,12 @@
                                     <option>Real Estate </option>
                                 </select>
                         </td>
-                        <td><input type="text" value="Notes"/></td>
+                        <td><input  id="notes" type="text" value="Notes" name="notes"/></td>
                     </tr>
                 </table>
                     <div id="buttons">
                         <input  id="clearButton" type="submit" value="Clear"/>
-                         <input type="submit" value="Update"/>
+                        <input  id="update" type="submit" value="Update"/>
                     </div>
                 </center>
             </form>
@@ -85,7 +86,7 @@
         <br><br><br>
         
         <section id="transaction_list">
-            This section is for the transaction list
+            <center><jsp:include page="display.jsp"/></center>
         </section>
         
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
