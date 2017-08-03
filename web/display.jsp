@@ -38,7 +38,7 @@
             conn = DriverManager.getConnection(dataURL, uName_DB, uPass_DB);
             
              //build and execute sql
-            String sql = "select * from ledger";
+            String sql = "select * from ledger order by ID desc";
             
            stmt = conn.createStatement();
             rs =  stmt.executeQuery(sql);

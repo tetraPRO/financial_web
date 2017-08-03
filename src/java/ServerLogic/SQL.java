@@ -1,5 +1,7 @@
 package ServerLogic;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -127,7 +129,7 @@ public class SQL {
     public ResultSet getTransactions(){        
          try{
             //build and execute sql
-            String sql = "select * from ledger";
+            String sql = "select * from ledger order by ID  desc";
             
            stmt = conn.createStatement();
             rs =  stmt.executeQuery(sql);
@@ -138,7 +140,24 @@ public class SQL {
         }return rs;
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+    public String getSumExpenses(){
+        float sumExpenses = 0;
+        String sum = "";
+         try{
+            //build and execute sql
+            String sql = "select sum(Amount) from ledger";
+            
+           stmt = conn.createStatement();
+            rs =  stmt.executeQuery(sql);
+            
+            while(rs.next()){
+                sumExpenses = rs.getFloat(1);
+            }
+            sum = String.format("%.2f", sumExpenses);
+        } catch (SQLException ex) {
+            Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+        }return sum;
+    }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

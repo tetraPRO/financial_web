@@ -1,8 +1,6 @@
 package Beans;
 
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  *
@@ -19,15 +17,6 @@ public class Transaction {
     private float amount;
     private String notes;
     
-    public Transaction(ResultSet rs) throws SQLException{
-        this.ID = rs.getInt(1);
-        this.date = rs.getDate(2);
-        this.toAccount = rs.getString(3);
-        this.fromAccount = rs.getString(4);
-        this.amount = rs.getFloat(5);
-        this.notes = rs.getString(6);
-    }
-
     public int getID() {
         return ID;
     }

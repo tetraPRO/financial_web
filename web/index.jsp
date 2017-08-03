@@ -7,6 +7,7 @@
                   : **Fullstack Engineer**
 --%>
 
+<%@page import="ServerLogic.SQL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,6 +49,7 @@
                                     <option>Gas</option>
                                     <option>Food/Groceries</option>
                                     <option>Entertainment</option>
+                                    <option>Cell Phone</option>
                                     <option>Medical</option>
                                     <option>Clothing</option>
                                     <option>Utilities</option>
@@ -84,8 +86,10 @@
         </section>
         
         <br><br><br>
+        <%SQL data = new SQL();%>
         
         <section id="transaction_list">
+            <center><h1>Expenses ($<%=data.getSumExpenses()%>)</h1></center>
             <center><jsp:include page="display.jsp"/></center>
         </section>
         
