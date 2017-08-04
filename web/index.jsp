@@ -65,6 +65,7 @@
                         <td><select id="fromAccount"  name="fromAccount">
                                     <option>Bank</option>
                                     <option>Cash</option>
+                                    <option>SNAP</option>
                                     <option>Bitcoin</option>
                                     <option>Silver</option>
                                     <option>Gold</option>
@@ -82,18 +83,23 @@
                     </div>
                 </center>
             </form>
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
         </section>
-        
-        <br><br><br>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <br>
         <%SQL data = new SQL();%>
         
         <section id="transaction_list">
             <center><h1>Expenses ($<%=data.getSumExpenses()%>)</h1></center>
             <center><jsp:include page="display.jsp"/></center>
         </section>
-        
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <aside id="assetBalances">
+            Asset balances go here...
+        </aside>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <aside id="liabilityBalances">
+            liability balances go here...
+        </aside>
         <!-- Javascript & JQuery -->
         <script>
             $(function(){
