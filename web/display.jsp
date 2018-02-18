@@ -7,66 +7,48 @@
                   : **Fullstack Engineer**
 --%>
 
+ <%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="Beans.Transaction"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
 <%@page import="ServerLogic.SQL"%>
-<%@page import="java.util.logging.Logger"%>
-<%@page import="java.util.logging.Level"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link rel="stylesheet" type="text/css" href="CSS/styles.css"/>
 
 <%
-        String dataURL = "jdbc:mysql://localhost:3306/Financial_DB";
-        String uName_DB = "root";
-        String uPass_DB = "admin";
-
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        
-          try {
-            //load driver so we can connect to database
-            Class.forName("com.mysql.jdbc.Driver");
-            
-            //get database connection
-            conn = DriverManager.getConnection(dataURL, uName_DB, uPass_DB);
-            
-             //build and execute sql
-            String sql = "select * from ledger order by ID desc";
-            
-           stmt = conn.createStatement();
-            rs =  stmt.executeQuery(sql);
-            
-        } catch (ClassNotFoundException  ex) {
-            Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
-        }catch(SQLException ex){
-             Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+        HttpSession session2 = request.getSession();
+        String user = (String) session2.getAttribute("user");
+        SQL data = new SQL();
+        if(user == null){
+            response.sendRedirect("login.jsp");
         }
-          %>
+        
+        ArrayList<Transaction> list = data.getTransactions(user);//monthly transactions
+%>
           
 <table border="0">
             <tr>
                 <td class="display_Headers">ID</td>
                 <td class="display_Headers">Date</td>
-                <td class="display_Headers">To</td> 
-                <td class="display_Headers">From</td>
-                <td class="display_Headers">Amount</td>
+                <td class="display_Headers">Account</td> 
+                <td class="display_Headers">Debit</td>
+                <td class="display_Headers">Credit</td>
                 <td class="display_Headers">Notes</td>
             </tr>
-            <% while(rs.next()){ %>
-            <tr class="displayData">
-                <td class="display_Data"><%= rs.getInt("ID")%></td>
-                <td class="display_Data"><%= rs.getString("Date")%></td>
-                <td class="display_Data"><%= rs.getString("To_Account")%></td>
-                <td class="display_Data"><%= rs.getString("From_Account")%></td>
-                <td class="display_Data"><%= rs.getFloat("Amount")%></td>
-                <td class="display_Data"><%= rs.getString("Notes")%></td>
+            
+            <%for(int i=0;i<list.size();i++){%>
+            <%String dark = "#b5b5b5";%><%--dark grey--%>
+            <%String light = "#e2e2e2";%><%--light grey--%>
+            <%String color = dark;%>
+            <%if(i%2==0){
+                color = light;                
+            }%>
+            <tr class="displayData"  bgcolor="<%=color%>">
+                <td><%=list.get(i).getID()%></td><!--ID-->
+                <td><%=list.get(i).getDate()%></td><!--date-->
+                 <td><%=list.get(i).getAccount()%></td><!--to which is the debit-->
+                <td><%=list.get(i).getDebit()%></td><!--Debit-->
+                <td><%=list.get(i).getCredit()%></td><!--Credit-->
+                <td><%=list.get(i).getNotes()%></td><!--notes-->
             </tr>
             <% } %>
-        </table>
+</table>

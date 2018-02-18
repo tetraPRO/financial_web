@@ -1,0 +1,38 @@
+/* 
+    Created on : Jul 23, 2017, 3:40:27 AM
+    Author     : tetraPRO( )
+                     : Software Wizard
+                    : Grand-Master Philip Caputo
+                  : **Fullstack Engineer**
+*/
+#fromAccount{
+    width: 100%;
+}
+
+#toAccount{
+    width: 100%;
+}
+
+#buttons{
+    padding-top: 8px;
+    margin-bottom: 0%;
+}
+
+.display_Headers{
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 113%;
+    font-weight: bold;
+}
+
+.display_Data{
+    padding: 3px;
+}
+
+tr.displayData td{
+    border-bottom: 1pt solid black;
+}
+
+.space{
+    padding-left: 25px;
+}

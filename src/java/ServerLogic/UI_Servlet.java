@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,25 +35,37 @@ public class UI_Servlet extends HttpServlet {
             throws ServletException, IOException {
         
         try {
+            HttpSession session = request.getSession();
+            
+            //date user account debit credit notes
             String date = request.getParameter("datepicker");
+            String user = (String) session.getAttribute("user");
+            SQL data = new SQL();
+            if(user == null ){
+                response.sendRedirect("login.jsp");
+            }
+            
+            //get parameters from form
             String toAccount = request.getParameter("toAccount");
             String fromAccount = request.getParameter("fromAccount");
-            String amount = request.getParameter("amount");
+            float amount = Float.parseFloat(request.getParameter("amount"));
             String notes = request.getParameter("notes");
+            
             
             //Convert string date into date object
             SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
             java.util.Date today = format.parse(date);
             java.sql.Date sqlDate = new java.sql.Date(today.getTime());
             
-            SQL data = new SQL();
             
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             
             //if the transaction is successful we will forward the request back to the index.jsp
-            if(data.addTransaction(sqlDate, toAccount, fromAccount, amount, notes)){
-                  request.getRequestDispatcher("index.jsp").forward(request, response);            
+            if(data.addTransaction(sqlDate, user, toAccount, amount, 0, notes)){
+                if(data.addTransaction(sqlDate, user, fromAccount, 0, amount, notes)){
+                     response.sendRedirect("index.jsp");
+                }       
             }else{
                 out.println("Sorry no dice! + <br>");
             }

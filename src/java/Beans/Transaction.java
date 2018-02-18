@@ -12,9 +12,10 @@ import java.sql.Date;
 public class Transaction {
     private int ID;
     private Date date;
-    private String toAccount;
-    private String fromAccount;
-    private float amount;
+    private String user;
+    private String account;
+    private float debit;
+    private float credit;
     private String notes;
     
     public int getID() {
@@ -33,30 +34,38 @@ public class Transaction {
         this.date = date;
     }
 
-    public String getToAccount() {
-        return toAccount;
+    public String getUser() {
+        return user;
     }
 
-    public void setToAccount(String toAccount) {
-        this.toAccount = toAccount;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public String getFromAccount() {
-        return fromAccount;
+    public String getAccount() {
+        return account;
     }
 
-    public void setFromAccount(String fromAccount) {
-        this.fromAccount = fromAccount;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
-    public float getAmount() {
-        return amount;
+    public float getDebit() {
+        return debit;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
+    public void setDebit(float debt) {
+        this.debit = debt;
     }
 
+    public float getCredit() {
+        return credit;
+    }
+
+    public void setCredit(float credit) {
+        this.credit = credit;
+    }
+    
     public String getNotes() {
         return notes;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ServerLogic;
 
 import java.io.IOException;
@@ -12,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author tetraPRO( )
@@ -41,6 +37,9 @@ public class Auth_Servlet extends HttpServlet {
             SQL data = new SQL();
         
             if(data.verifyUser(email, pass)){
+                HttpSession session = request.getSession();
+                session.setAttribute("user", email);
+                session.setAttribute("data", data);
                 response.sendRedirect("index.jsp");
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");

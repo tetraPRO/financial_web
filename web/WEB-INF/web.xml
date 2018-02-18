@@ -4,6 +4,42 @@
         <servlet-name>Auth_Servlet</servlet-name>
         <servlet-class>ServerLogic.Auth_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Display_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Display_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Budget_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Budget_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Asset_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Asset_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Liability_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Liability_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Income_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Income_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Register_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Transfer_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Transfer_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Details_Servlet</servlet-name>
+        <servlet-class>ServerLogic.Details_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FutureContract_Servlet</servlet-name>
+        <servlet-class>ServerLogic.FutureContract_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Auth_Servlet</servlet-name>
         <url-pattern>/Auth_Servlet</url-pattern>
@@ -15,6 +51,42 @@
     <servlet-mapping>
         <servlet-name>UI_Servlet</servlet-name>
         <url-pattern>/UI_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Display_Servlet</servlet-name>
+        <url-pattern>/Display_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Budget_Servlet</servlet-name>
+        <url-pattern>/Budget_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Asset_Servlet</servlet-name>
+        <url-pattern>/Asset_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Liability_Servlet</servlet-name>
+        <url-pattern>/Liability_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Income_Servlet</servlet-name>
+        <url-pattern>/Income_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register_Servlet</servlet-name>
+        <url-pattern>/Register_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Transfer_Servlet</servlet-name>
+        <url-pattern>/Transfer_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Details_Servlet</servlet-name>
+        <url-pattern>/Details_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FutureContract_Servlet</servlet-name>
+        <url-pattern>/FutureContract_Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

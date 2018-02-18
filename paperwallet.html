@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>tetraPRO( ) </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="JS/jquery.min.js"></script>
+        <script type="text/javascript" src="JS/qrcode.js"></script>
+        <style>
+            #qrcode_private{/*2nd quad*/
+                position: absolute;
+                margin-top: -688px;
+                margin-left: 123px;
+            }
+            
+            #qrcode_private1{/*1st quad*/
+                position: absolute;
+                margin-top: -710px;
+                margin-left: 1032px;
+            }
+            
+            #qrcode_private2{/*3rd quad*/
+                position: absolute;
+                margin-top: -358px;
+                margin-left: 125px;
+            }
+            
+            #qrcode_private3{/*4th quad*/
+                position: absolute;
+                margin-top: -358px;
+                margin-left: 1032px;
+            }
+        </style>
+        </style>
+    </head>
+    <body>
+        <div>I am Sovereign!</div>
+        <input id="text" type="text" value="Iam Soveriegn" style="width:80%" /><br /><!-- need to remove this-->
+        
+        <div id="paperkeyarea">
+            <div id="keyarea" class="keyarea art">
+                <div id="artwallet" class="artwallet">
+                    <img id="papersvg1" class="papersvg" src="Images/paperwallet.jpg" width="1205px" height="666px"/>
+                    <div id="qrcode_private" class="qrcode_public">
+                        <canvas style="width: 82.5px; height: 82.5px;" height="825" width="825"></canvas>
+                    </div>
+                    <div id="qrcode_private1" class="qrcode_private">
+                        <canvas style="width: 102.5px; height: 102.5px;" height="1025" width="1025"></canvas>
+                    </div>
+                     <div id="qrcode_private2" class="qrcode_private">
+                        <canvas style="width: 102.5px; height: 102.5px;" height="1025" width="1025"></canvas>
+                    </div>
+                     <div id="qrcode_private3" class="qrcode_private">
+                        <canvas style="width: 102.5px; height: 102.5px;" height="1025" width="1025"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode_private"), {
+	width : 110,
+	height : 110
+});
+
+var qrcode1 = new QRCode(document.getElementById("qrcode_private1"), {
+	width : 110,
+	height : 110
+});
+
+var qrcode2 = new QRCode(document.getElementById("qrcode_private2"), {
+	width : 110,
+	height : 110
+});
+
+var qrcode3 = new QRCode(document.getElementById("qrcode_private3"), {
+	width : 110,
+	height : 110
+});
+
+function makeCode () {	
+                                //need to generate 4 private keys here...
+                                //generatePrivateKey(); 
+                                
+                                
+	var elText = document.getElementById("text");//do not need this at all...or can add the PK to it!
+	
+	if (!elText.value) {
+		alert("Input a text");
+		elText.focus();
+		return;
+	}
+	
+	qrcode.makeCode(elText.value);//unique PK here
+                                    qrcode1.makeCode(elText.value);//unique PK here
+                                    qrcode2.makeCode(elText.value);//unique PK here
+                                    qrcode3.makeCode(elText.value);//unique PK here...
+}
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+</script>
+    </body>
+</html>
